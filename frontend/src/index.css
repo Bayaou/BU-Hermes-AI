@@ -1,67 +1,56 @@
 /* src/index.css */
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #0b0f19;
-  --foreground: #f8fafc;
-  --primary: #7c3aed;
-  --secondary: #1f2937;
-  --card: #111827;
-  --border: #374151;
+/* Custom theme with glassmorphism */
+@theme {
+  --color-background: #0a0a0f;
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-primary: #f9a8d4;
+  --color-primary-400: #f472b6;
+  --color-secondary: #a78bfa;
+  --color-accent: #34d399;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
-html,
-body,
-#root {
-  width: 100%;
+/* Global body styles */
+body {
+  background: #0a0a0f;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
   min-height: 100vh;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Inter, sans-serif;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* ============================================
-   BUTTON ANIMATIONS
-   ============================================ */
-
-@keyframes shine {
-  0% {
-    transform: rotate(25deg) translateX(-100%);
-  }
-  20% {
-    transform: rotate(25deg) translateX(0%);
-  }
-  80% {
-    transform: rotate(25deg) translateX(0%);
-  }
-  100% {
-    transform: rotate(25deg) translateX(100%);
-  }
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
 }
 
-@keyframes border-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
-/* ============================================
-   HERO ANIMATIONS
-   ============================================ */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(249, 168, 212, 0.3);
+}
 
-@keyframes fade-in-up {
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+/* Fade In Up */
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -72,69 +61,73 @@ body {
   }
 }
 
-@keyframes bounce-slow {
-  0%, 100% {
-    transform: translateY(0);
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
   50% {
-    transform: translateY(-10px);
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-@keyframes scroll-down {
+.animate-gradient {
+  animation: gradient 4s ease infinite;
+  background-size: 200% auto;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+/* Ping Animation */
+@keyframes ping {
   0% {
-    transform: translateY(0);
+    transform: scale(1);
     opacity: 1;
   }
   100% {
-    transform: translateY(12px);
+    transform: scale(2);
     opacity: 0;
   }
 }
 
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
-
-@layer utilities {
-  /* Fade In Up */
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
-    opacity: 0;
-  }
-  
-  /* Bounce Slow */
-  .animate-bounce-slow {
-    animation: bounce-slow 3s ease-in-out infinite;
-  }
-  
-  /* Scroll Down */
-  .animate-scroll-down {
-    animation: scroll-down 2s ease-in-out infinite;
-  }
-  
-  /* Delay Utilities */
-  .delay-200 {
-    animation-delay: 200ms;
-  }
-  
-  .delay-400 {
-    animation-delay: 400ms;
-  }
-  
-  .delay-600 {
-    animation-delay: 600ms;
-  }
-  
-  .delay-800 {
-    animation-delay: 800ms;
-  }
-  
-  .delay-1000 {
-    animation-delay: 1000ms;
-  }
-  
-  .delay-2000 {
-    animation-delay: 2000ms;
-  }
+.animate-ping {
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }

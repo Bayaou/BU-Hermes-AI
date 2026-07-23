@@ -2,7 +2,9 @@
 export default {
   plugins: {
     '@tailwindcss/postcss': {
-      // v4 uses this format - NO options needed for basic setup
+      // This is required for v4 alpha
+      base: '/',
+      sourceMap: false,
     },
   },
 }
